@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Especial</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff6f61;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff3b2e;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- Página de Introducción -->
+    <div id="intro" class="container">
+        <h1>TE QUIERO PROPONER ALGO</h1>
+        <button class="btn" onclick="showRequest()">DESCUBRE QUÉ ES</button>
+    </div>
+
+    <!-- Página de Solicitud de Pambazos -->
+    <div id="request" class="container hidden">
+        <h1>Chata, ¿podrías hacerme pambazos?</h1>
+        <p>Rifate unos este fin. ¿Qué dices?</p>
+        <div class="button-container">
+            <a href="https://wa.me/5527303713?text=Cuando%20quieres%20tus%20pambazos,%20amor%3F" class="btn" target="_blank">¡Claro que sí, mi rey!</a>
+            <button class="btn" id="noButton" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar la solicitud de pambazos y ocultar la introducción
+        function showRequest() {
+            document.getElementById('intro').classList.add('hidden');
+            document.getElementById('request').classList.remove('hidden');
+        }
+
+        // Función para mover el botón 'No' a una posición aleatoria dentro del contenedor
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const container = document.getElementById('request');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+            
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>
+
